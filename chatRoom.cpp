@@ -93,7 +93,7 @@ void accept_connection(boost::asio::io_context &io, char *port, tcp::acceptor &a
     acceptor.async_accept([&](boost::system::error_code ec, tcp::socket socket)
                           {
                             if(!ec) {
-            std::shared_ptr<Session> session = std::make_shared<Session>(std::move(socket), room);
+            std::shared_ptr<Session> session = std::make_shared <Session>(std::move(socket), room);
             session->start();
         }
         accept_connection(io, port,acceptor, room, endpoint); });
